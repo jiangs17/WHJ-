@@ -1,4 +1,13 @@
 library(shiny)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(tidyr)
+
+original_data <- read.csv("data/CancerByAge.csv", stringsAsFactors = FALSE)
+colnames(original_data) = c("X", "Entity", "Code", "Year", "Under5", "50to69",
+                            "15to49", "5to14", "70More")
+data <- gather(original_data, "Age_group", "Num_cancer", c(5:9))
 
 ui <- fluidPage(
   titlePanel("United States Cancer"),
@@ -73,9 +82,23 @@ ui <- fluidPage(
                           
                         )
                       )
-             ),      
+             ),
              navbarMenu("Visualization Maps",
-                        tabPanel("Visualization #1"),
+                        tabPanel("Cancer Rate By Age",
+                          sidebarLayout(
+                            sidebarPanel(
+                              selectInput("age", "Age:",
+                                          choices = c("Under5", "5to14",
+                                                      "15to49", "50to69",
+                                                      "70More")),
+                              hr(),
+                              helpText("Choose the age group interval")
+                            ),
+                            mainPanel(
+                              plotOutput("plot2")
+                            )
+                          )
+                        ),
                         tabPanel("Visualization #2"),
                         tabPanel("Visualization #3")
              )
