@@ -11,7 +11,13 @@ source("sources/barplotbyAge.R")
 source("sources/cancerByState.R")
 source("sources/cancerByCategories.R")
 
-cancerData <- read.csv("~/Desktop/info201/group/WHJ-/NCDoubleL/data/State.csv", header = TRUE, stringsAsFactors = FALSE)
+cancerData <- read.csv("~/Desktop/WHJ-/NCDoubleL/data/State.csv", header = TRUE, stringsAsFactors = FALSE)
+
+original_data <- read.csv("data/CancerByAge.csv", stringsAsFactors = FALSE)
+colnames(original_data) = c("X", "Entity", "Code", "Year", "Under5", "50to69",
+                            "15to49", "5to14", "70More")
+data <- gather(original_data, "Age_group", "Num_cancer", c(5:9))
+
 
 
 server <- function(input, output) {
@@ -31,4 +37,11 @@ server <- function(input, output) {
     tagList(url)
   })
   
+  output$tab2 <- renderUI ({
+    tagList(a("Technical Report",
+              href = "https://github.com/jiangs17/WHJ-/wiki/P2_technical_report"))
+  })
+  
 }
+
+
