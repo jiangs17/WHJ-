@@ -11,7 +11,7 @@ source("sources/barplotbyAge.R")
 source("sources/cancerByState.R")
 source("sources/cancerByCategories.R")
 
-cancerData <- read.csv("~/Desktop/WHJ-/NCDoubleL/data/State.csv", header = TRUE, stringsAsFactors = FALSE)
+cancerData <- read.csv("data/State.csv", header = TRUE, stringsAsFactors = FALSE)
 
 original_data <- read.csv("data/CancerByAge.csv", stringsAsFactors = FALSE)
 colnames(original_data) = c("X", "Entity", "Code", "Year", "Under5", "50to69",

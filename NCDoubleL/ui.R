@@ -24,7 +24,7 @@ ui <- fluidPage(theme = "bootstrap.css",
                     tags$br(),
                       tags$p("")
                     ),
-                    tags$li("What are the common cancers in each State?",
+                    tags$li("What are the common cancers in each state?",
                       tags$br(),
                       tags$p("")
                     )
@@ -163,7 +163,7 @@ ui <- fluidPage(theme = "bootstrap.css",
             plotOutput("plot5"),
              tags$div("Here will show a pie chart of the common cancers in
                       state, structure will be arranged like the other
-                      two maps")
+                      two info visualizations")
           )
         )
       )
@@ -188,10 +188,12 @@ ui <- fluidPage(theme = "bootstrap.css",
                        detected early as possible")
       ), # end of first div
       tags$div(
-        h4("#2. Cancer Rate By State")
+        h4("#2. Cancer Rate By State"),
+        tags$blockquote("Conclusion from cancer rate by state")
       ), # end of second div
       tags$div(
-        h4("#3. Cancer Rate By Categories")
+        h4("#3. Cancer Rate By Categories"),
+        tags$blockquote("Conclusion from cancer rate by categories")
       ) # end of third div
    ), # end of conclusion
    tabPanel("About",
