@@ -121,23 +121,43 @@ ui <- fluidPage(theme = "bootstrap.min.css",
                             ) # end of main panel 
                           )
                         ),
-                        # tabPanel("Cancer By States",
-                        #          sidebarLayout(
-                        #            sidebarPanel(
-                        #              selectInput("cancerType", "Type:",
-                        #                          choices = c("ALL.CASES", "FEMALE.BREAST", "UTERINE.CERVIX",
-                        #                                      "COLON...RECTUM", "UTERINE.CORPUS", "LEUKEMIA",
-                        #                                      "LUNG...BRONCHUS", "MELANOMA.OF.THE.SKIN", "NON_HODGKIN.LYMPHOMA",
-                        #                                      "PROSTATE", "URINARY.BLADDER")),
-                        #              hr(),
-                        #              helpText("Choose type")
-                        #            ),
-                        #            mainPanel(
-                        #              plotOutput("plot4")
-                        #            )
-                        #          )
-                        # ), # end of tab panel
-                        tabPanel("Visualization #3")
+                        tabPanel("Cancer By States",
+                                 sidebarLayout(
+                                   sidebarPanel(
+                                     selectInput("cancerType", "Type:",
+                                                 choices = c("ALL.CASES", "FEMALE.BREAST", "UTERINE.CERVIX",
+                                                             "COLON...RECTUM", "UTERINE.CORPUS", "LEUKEMIA",
+                                                             "LUNG...BRONCHUS", "MELANOMA.OF.THE.SKIN", "NON_HODGKIN.LYMPHOMA",
+                                                             "PROSTATE", "URINARY.BLADDER")),
+                                     hr(),
+                                     helpText("Choose type")
+                                   ),
+                                   mainPanel(
+                                     plotOutput("plot4")
+                                   )
+                                 )
+                        ),
+                        tabPanel("Cancer By Categories",
+                                 sidebarLayout(
+                                   sidebarPanel(
+                                     selectInput("cancerState", "Type:",
+                                                 choices = c("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+                                                             "Delaware", "Dist.ofColumbia", "Florida", "Georgia", "Hawaii", "Idaho",
+                                                             "Illinois", "Indiana", "Iowa", "Kansa", "Kentucky", "Louisiana", "Maine",
+                                                             "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana",
+                                                             "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
+                                                             "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+                                                             "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah",
+                                                             "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming",
+                                                             "United States")),
+                                     hr(),
+                                     helpText("Choose State")
+                                   ),
+                                   mainPanel(
+                                     plotOutput("plot5")
+                                   )
+                                 )
+                        )
              ),
              tabPanel("Conclusion",
                 tags$div(
