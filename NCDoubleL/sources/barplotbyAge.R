@@ -9,9 +9,11 @@ plot <- function(data,age){
   years <- data2$Year
   num_cancer <- data2$Num_cancer
   mydata <- data.frame(years, num_cancer)
-  p <- ggplot(mydata, aes(years, num_cancer))
+  p <- ggplot(mydata, aes(years, num_cancer, fill = years)) +
+    scale_fill_viridis_c()
   plot <- p + geom_bar(stat = "identity") +
-    xlab("Years") + ylab("Number Of Cancer") +
+    xlab("Years") + 
+    ylab("Number Of Cancer") +
     ggtitle("Number Of Cancer vs Years(1990-2017)")
   return(plot)
 }
