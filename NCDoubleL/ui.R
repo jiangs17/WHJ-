@@ -33,15 +33,15 @@ ui <- fluidPage(theme = shinytheme('flatly'),
             tags$b(tags$blockquote("Cancer is a collection of related
                    diseases that affects all age groups across all
                    populations. It can start from almost anywhere
-                   in the body, the symptoms can be hardly noticable
-                   until it reaches to certain stage. Different cancer
+                   in the body, the symptoms can be hardly noticeable
+                   until it reaches a certain stage. Different cancer
                    has different survival rate, though there's no
                    cure for cancer yet, patients' condition can
-                   be significantly improved if detect early enough.
+                   be significantly improved if detected early enough.
                    Thus, it is vital for people to know what kind
                    of factors may trigger cancer in the long run
                    therefore are able to prevent them accordingly.
-                   In this webpage, we provided couple of
+                   In this web page, we provided a couple of
                    information that are related to cancer statistics
                    in the United States for the user to gain
                    a better idea about the current situation of cancer,
@@ -84,7 +84,7 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                                     "15to49", "50to69",
                                     "70More")),
             hr(),
-            helpText("Choose the age group interval")
+            helpText("Choose the age group")
           ),
             mainPanel(
             plotOutput("plot1"),
@@ -100,7 +100,7 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                             trend of cancer in the different age group.")),
                 tags$p(tags$blockquote("With the default value, we can get the
                             barplot for people who are under five years old
-                            that have cancer from 1990 to 2017. The barplot
+                            have cancer from 1990 to 2017. The barplot
                             shows that the trend is steady for the given age
                             group (Under five years old. Even though it is
                             constant, but the number is still high. It is
@@ -129,10 +129,10 @@ ui <- fluidPage(theme = shinytheme('flatly'),
            tags$div(tags$b(h4("Research Question: What are the statistics of the
                               specific type of cancer in each state?"))),
            tags$p(tags$blockquote("Findings: This US map with the numerical facts about the type of cancer in
-                        every states give users a information about what is the most prevalent type of
+                        every states give users information about what is the most prevalent type of
                         cancer in specific area.")),
            tags$p(tags$blockquote("By looking at the default value, it has been proven that
-                        people are suffering from various cancers in various area.
+                        people are suffering from various cancers in various areas.
                         In fact, it is important for users to know which type of cancers
                         that they are being exposed and be aware so they can prevent themselves
                         from those prevalent cancers in their place."))
@@ -150,14 +150,19 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                        situation in the United States. Thus, those direct
                        or indirect stakeholders can use appropriate strategies
                        to reduce the chances of getting cancers or worsening
-                       cancers by not going to doctors."),
-        tags$blockquote("These findings provide alerts to indirect
-                        stakeholders, for instance, parents should
-                        be aware that young children can also get
-                        cancers and they should bring their children
-                        to constant body checks. By doing so,
-                        cancers or any abnormal symptoms can be
-                       detected early as possible")
+                       cancers by not going to doctors. These findings provide 
+                       alerts to indirect stakeholders, for instance, parents should
+                       be aware that young children can also get
+                       cancers and they should bring their children
+                       to constant body checks. By doing so,
+                       cancers or any abnormal symptoms can be
+                       detected early as possible"),
+       tags$blockquote("We found that the trend for the older age group is increasing.
+                       The reason might be the development of cancer detecting technology
+                       and the treatment for cancers. More people are detected with cancer
+                       , so the number of cases will increase. People with cancer might die 
+                       soon in the 90s. With the better treatments, people with cancer tend
+                       to live longer with cancers")
       ),
       tags$div(
         h4("#2. Cancer Rate By State"),
@@ -166,7 +171,14 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                         this visualized map only shows the total number of cancers
                         in each state. In deed, California has comparatively
                         highest number of people which cause them to have highest
-                        number of cancer")
+                        number of cancer"),
+        tags$blockquote("An interesting finding we discovered is that the number
+                        of people who are suffering from Melanoma is higher than
+                        the other cancers in the State of Washington. Turns out that
+                        People in west Washington believes there's no need to wear
+                        sunscreen under such a cloudy weather. However, the UV index
+                        is indeed the highest during cloudy weather. Thus explained
+                        the higher rate of having Melanoma in Washington.")
       )
    ), 
    tabPanel("About",
@@ -180,10 +192,11 @@ ui <- fluidPage(theme = shinytheme('flatly'),
         h4("- About Us"),
         tags$p("As students in info 201, we hope to
                benefit people using what've learned.
-               We chose this topic beacuse more and more cancer cases
+               We chose this topic because more and more cancer cases
                are discovered each year, we wanted to help people
-               realize that these dieases are actually closer than we
-               think."),
+               realize that these diseases are actually closer than we
+               think. And at the same time advocate for a healthier 
+               lifestyle to keep these diseases away."),
         tags$p("Project Contributors: Sinmyung Han, Ziqing Wang, Victoria Jiang")
         )
      )
