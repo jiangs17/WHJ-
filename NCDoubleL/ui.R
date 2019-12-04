@@ -18,8 +18,8 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                 tags$br(),
                 tags$p("")
               ),
-              tags$li("What is the overview of the cancer case in the
-                      United States?",
+              tags$li("What are the statistics of the specific type of cancer
+                      in each state?",
               tags$br(),
               tags$p("")
               )
