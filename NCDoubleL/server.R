@@ -1,16 +1,13 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(plotly)
 library(tidyr)
 
 source("ui.R")
 source("sources/barplotbyAge.R")
 source("sources/cancerByState.R")
-#source("sources/cancerByCategories.R")
 
 cancerData <- read.csv("data/State.csv", header = TRUE, stringsAsFactors = FALSE)
-
 original_data <- read.csv("data/CancerByAge.csv", stringsAsFactors = FALSE)
 colnames(original_data) = c("X", "Entity", "Code", "Year", "Under5", "50to69",
                             "15to49", "5to14", "70More")
@@ -34,7 +31,5 @@ server <- function(input, output) {
     tagList(a("Technical Report",
               href = "https://github.com/jiangs17/WHJ-/wiki/P2_technical_report"))
   })
-  
 }
-
 

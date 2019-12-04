@@ -5,8 +5,8 @@ account: melodywongs
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1505188
-bundleId: 2639209
+bundleId: 2641402
 url: https://melodywongs.shinyapps.io/NCDoubleL/
-when: 1575442274.37494
+when: 1575489145.45268
 asMultiple: FALSE
 asStatic: FALSE

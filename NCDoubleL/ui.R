@@ -1,7 +1,6 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(tidyr)
 library(shinythemes)
 
 ui <- fluidPage(theme = shinytheme('flatly'),
@@ -24,8 +23,8 @@ ui <- fluidPage(theme = shinytheme('flatly'),
               tags$br(),
               tags$p("")
               )
-            ) # end of list
-          ) # end of div
+            ) 
+          )
         ),
         mainPanel(
           class = "main",
@@ -70,9 +69,10 @@ ui <- fluidPage(theme = shinytheme('flatly'),
               tags$br(),
               tags$i("All the above information are found from the
                      website of National Cancer Institute. For
-                     more information, please go to:", uiOutput("tab"))
-          ) # end of div
-        ) #end of main panel
+                     more information, please go to:", 
+                     uiOutput("tab"))
+          )
+        ) 
       )
    ),
     navbarMenu("Visualization Maps",
@@ -106,8 +106,8 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                             constant, but the number is still high. It is
                             shown that above 90,000 children under five years
                             old have cancers during the given year periods."))
-              ) # end of div
-           ) # end of main panel
+              )
+           )
         )
     ),
       tabPanel("Cancer By States",
@@ -117,11 +117,11 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                         choices = c("ALL_CASES", "FEMALE_BREAST",
                                     "UTERINE_CERVIX", "COLON_and_RECTUM",
                                     "UTERINE_CORPUS", "LEUKEMIA",
-                                    "LUNG_and_BRONCHUS", "MELANOMA_OF_THE_SKIN",
+                                    "LUNG_BRONCHUS", "MELANOMA_OF_THE_SKIN",
                                     "NON_HODGKIN_LYMPHOMA", "PROSTATE",
                                     "URINARY_BLADDER")),
             hr(),
-            helpText("Choose type")
+            helpText("Choose a cancer type")
          ),
          mainPanel(
            plotOutput("plot4"),
@@ -139,7 +139,7 @@ ui <- fluidPage(theme = shinytheme('flatly'),
          )
       )
    )
-   ),
+),
      tabPanel("Conclusion",
        tags$div(
        h4("#1. Cancer Rate By Age"),
@@ -158,7 +158,7 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                         to constant body checks. By doing so,
                         cancers or any abnormal symptoms can be
                        detected early as possible")
-      ), # end of first div
+      ),
       tags$div(
         h4("#2. Cancer Rate By State"),
         tags$blockquote("When users first look at the US map, they might think
@@ -168,7 +168,7 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                         highest number of people which cause them to have highest
                         number of cancer")
       )
-   ), # end of conclusion
+   ), 
    tabPanel("About",
       tags$div(
         h4("- About Tech"),
@@ -183,8 +183,9 @@ ui <- fluidPage(theme = shinytheme('flatly'),
                We chose this topic beacuse more and more cancer cases
                are discovered each year, we wanted to help people
                realize that these dieases are actually closer than we
-               think.")
+               think."),
+        tags$p("Project Contributors: Sinmyung Han, Ziqing Wang, Victoria Jiang")
         )
      )
-  ) # end of navbarpage
+  )
 )
