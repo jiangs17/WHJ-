@@ -1,83 +1,79 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(plotly)
 library(tidyr)
+library(shinythemes)
 
-ui <- fluidPage(theme = "bootstrap.css",
+ui <- fluidPage(theme = shinytheme('flatly'),
   titlePanel("Cancer in the US"),
   navbarPage("Statistics about cancer",
     tabPanel("Overview",
-            sidebarLayout(
-              sidebarPanel(
-                class = "side",
-                tags$div(
-                  h3("Research Questions"),
-                  tags$ol(
-                    tags$li("Does the number of people diagnosed with cancer
-                            differ by age groups?",
-                      tags$br(),
-                      tags$p("")
-                    ),
-                    tags$li("What is the overview of the cancer case in the
-                            United States?",
-                    tags$br(),
-                      tags$p("")
-                    ),
-                    tags$li("What are the common cancers in each state?",
-                      tags$br(),
-                      tags$p("")
-                    )
-                  ) # end of list
-                ) # end of div
+      sidebarLayout(
+        sidebarPanel(
+          class = "side",
+          tags$div(
+            h3("Research Questions"),
+            tags$ol(
+              tags$li("Does the number of people diagnosed with cancer
+                      differ by age groups?",
+                tags$br(),
+                tags$p("")
               ),
-              mainPanel(
-                class = "main",
-                tags$div(
-                  h3("Introduction"),
-                  tags$b(tags$blockquote("Cancer is a collection of related
-                         diseases that affects all age groups across all
-                         populations. It can start from almost anywhere
-                         in the body, the symptoms can be hardly noticable
-                         until it reaches to certain stage. Different cancer
-                         has different survival rate, though there's no
-                         cure for cancer yet, patients' condition can
-                         be significantly improved if detect early enough.
-                         Thus, it is vital for people to know what kind
-                         of factors may trigger cancer in the long run
-                         therefore are able to prevent them accordingly.
-                         In this webpage, we provided couple of
-                         information that are related to cancer statistics
-                         in the United States for the user to gain
-                         a better idea about the current situation of cancer,
-                         including age, states, etc.."))
-                ),
-                tags$p(""),
-                tags$div(
-                  h3("Insights"),
-                  tags$ul(
-                    tags$li(tags$b("In every 100,000 men and women, 439.2
-                                  cases of cancer are discovered, and 163.5
-                                  cases are fatal.")),
-                    tags$br(),
-                    tags$li(tags$b("It is estimated that 1,790 children and
-                                   adolescents whose age was between 0 - 19
-                                   died from cancer in 2017, and there were
-                                   15,270 cancer cases in total.")),
-                    tags$br(),
-                    tags$li(tags$b("Men indeed have higher cancer mortality
-                                   rate than women, whereas African American
-                                   Men's cancer mortality rate is the highest
-                                   among all and Asian/Pacific Islander Women's
-                                   rate is the lowest."))
-                  ),
-                    tags$br(),
-                    tags$i("All the above information are found from the
-                           website of National Cancer Institute. For
-                           more information, please go to:", uiOutput("tab"))
-                ) # end of div
-              ) #end of main panel
-            )
+              tags$li("What is the overview of the cancer case in the
+                      United States?",
+              tags$br(),
+              tags$p("")
+              )
+            ) # end of list
+          ) # end of div
+        ),
+        mainPanel(
+          class = "main",
+          tags$div(
+            h3("Introduction"),
+            tags$b(tags$blockquote("Cancer is a collection of related
+                   diseases that affects all age groups across all
+                   populations. It can start from almost anywhere
+                   in the body, the symptoms can be hardly noticable
+                   until it reaches to certain stage. Different cancer
+                   has different survival rate, though there's no
+                   cure for cancer yet, patients' condition can
+                   be significantly improved if detect early enough.
+                   Thus, it is vital for people to know what kind
+                   of factors may trigger cancer in the long run
+                   therefore are able to prevent them accordingly.
+                   In this webpage, we provided couple of
+                   information that are related to cancer statistics
+                   in the United States for the user to gain
+                   a better idea about the current situation of cancer,
+                   including age, states, etc.."))
+          ),
+          tags$p(""),
+          tags$div(
+            h3("Insights"),
+            tags$ul(
+              tags$li(tags$b("In every 100,000 men and women, 439.2
+                            cases of cancer are discovered, and 163.5
+                            cases are fatal.")),
+              tags$br(),
+              tags$li(tags$b("It is estimated that 1,790 children and
+                             adolescents whose age was between 0 - 19
+                             died from cancer in 2017, and there were
+                             15,270 cancer cases in total.")),
+              tags$br(),
+              tags$li(tags$b("Men indeed have higher cancer mortality
+                             rate than women, whereas African American
+                             Men's cancer mortality rate is the highest
+                             among all and Asian/Pacific Islander Women's
+                             rate is the lowest."))
+            ),
+              tags$br(),
+              tags$i("All the above information are found from the
+                     website of National Cancer Institute. For
+                     more information, please go to:", uiOutput("tab"))
+          ) # end of div
+        ) #end of main panel
+      )
    ),
     navbarMenu("Visualization Maps",
       tabPanel("Cancer Rate By Age",
@@ -118,55 +114,31 @@ ui <- fluidPage(theme = "bootstrap.css",
         sidebarLayout(
           sidebarPanel(
             selectInput("cancerType", "Type:",
-                        choices = c("ALL.CASES", "FEMALE.BREAST",
-                                    "UTERINE.CERVIX", "COLON...RECTUM",
-                                    "UTERINE.CORPUS", "LEUKEMIA",
-                                    "LUNG...BRONCHUS", "MELANOMA.OF.THE.SKIN",
-                                    "NON_HODGKIN.LYMPHOMA", "PROSTATE",
-                                    "URINARY.BLADDER")),
+                        choices = c("ALL_CASES", "FEMALE_BREAST",
+                                    "UTERINE_CERVIX", "COLON_and_RECTUM",
+                                    "UTERINE_CORPUS", "LEUKEMIA",
+                                    "LUNG_and_BRONCHUS", "MELANOMA_OF_THE_SKIN",
+                                    "NON_HODGKIN_LYMPHOMA", "PROSTATE",
+                                    "URINARY_BLADDER")),
             hr(),
             helpText("Choose type")
          ),
          mainPanel(
            plotOutput("plot4"),
            hr(),
-           tags$div(tags$b(h4("Research Question: What is the overview of the
-                              cancer case in the United States?")))
+           tags$div(tags$b(h4("Research Question: What are the statistics of the
+                              specific type of cancer in each state?"))),
+           tags$p(tags$blockquote("Findings: This US map with the numerical facts about the type of cancer in
+                        every states give users a information about what is the most prevalent type of
+                        cancer in specific area.")),
+           tags$p(tags$blockquote("By looking at the default value, it has been proven that
+                        people are suffering from various cancers in various area.
+                        In fact, it is important for users to know which type of cancers
+                        that they are being exposed and be aware so they can prevent themselves
+                        from those prevalent cancers in their place."))
          )
       )
-   ),
-      tabPanel("Cancer By Categories",
-        sidebarLayout(
-          sidebarPanel(
-            selectInput("cancerState", "Type:",
-                        choices = c("Alabama", "Alaska", "Arizona", "Arkansas",
-                                    "California", "Colorado", "Connecticut",
-                                     "Delaware", "Dist.ofColumbia", "Florida",
-                                     "Georgia", "Hawaii", "Idaho", "Illinois",
-                                     "Indiana", "Iowa", "Kansa", "Kentucky",
-                                     "Louisiana", "Maine", "Maryland",
-                                     "Massachusetts", "Michigan", "Minnesota",
-                                     "Mississippi", "Missouri", "Montana",
-                                     "Nebraska", "Nevada", "New Hampshire",
-                                     "New Jersey", "New Mexico", "New York",
-                                     "North Carolina", "North Dakota", "Ohio",
-                                     "Oklahoma", "Oregon", "Pennsylvania",
-                                     "Rhode Island", "South Carolina",
-                                     "South Dakota", "Tennessee", "Texas",
-                                     "Utah", "Vermont", "Virginia",
-                                     "Washington", "West Virginia",
-                                     "Wisconsin", "Wyoming", "United States")),
-            hr(),
-            helpText("Choose State")
-          ),
-          mainPanel(
-            plotOutput("plot5"),
-             tags$div("Here will show a pie chart of the common cancers in
-                      state, structure will be arranged like the other
-                      two info visualizations")
-          )
-        )
-      )
+   )
    ),
      tabPanel("Conclusion",
        tags$div(
@@ -189,12 +161,13 @@ ui <- fluidPage(theme = "bootstrap.css",
       ), # end of first div
       tags$div(
         h4("#2. Cancer Rate By State"),
-        tags$blockquote("Conclusion from cancer rate by state")
-      ), # end of second div
-      tags$div(
-        h4("#3. Cancer Rate By Categories"),
-        tags$blockquote("Conclusion from cancer rate by categories")
-      ) # end of third div
+        tags$blockquote("When users first look at the US map, they might think
+                        that California has the highest cancer rate. However,
+                        this visualized map only shows the total number of cancers
+                        in each state. In deed, California has comparatively
+                        highest number of people which cause them to have highest
+                        number of cancer")
+      )
    ), # end of conclusion
    tabPanel("About",
       tags$div(
